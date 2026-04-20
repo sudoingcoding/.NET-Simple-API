@@ -1,0 +1,58 @@
+ GET http://localhost:5025/api/users
+Authorization: Bearer valid-token
+
+###
+GET http://localhost:5025/api/users/1
+Authorization: Bearer valid-token
+
+###
+POST http://localhost:5025/api/users
+Content-Type: application/json
+Authorization: Bearer valid-token
+
+{
+    "name": "John Doe",
+    "email": "john.doe@example.com",
+    "department": "Engineering"
+}
+
+###
+PUT http://localhost:5025/api/users/1
+Content-Type: application/json
+Authorization: Bearer valid-token
+
+{
+    "name": "John Doe",
+    "email": "john.doe@example.com",
+    "department": "Marketing"
+}
+
+###
+DELETE http://localhost:5025/api/users/1
+Authorization: Bearer valid-token
+
+###
+# Test invalid token
+GET http://localhost:5025/api/users
+Authorization: Bearer invalid-token
+
+###
+# Test no token
+GET http://localhost:5025/api/users
+
+###
+# Test non-existent endpoint
+GET http://localhost:5025/api/nonexistent
+Authorization: Bearer valid-token
+
+###
+# Test invalid user data
+POST http://localhost:5025/api/users
+Content-Type: application/json
+Authorization: Bearer valid-token
+
+{
+    "name": "",
+    "email": "invalid",
+    "department": ""
+}
